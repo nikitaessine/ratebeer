@@ -1,0 +1,99 @@
+irb(main):010:0> uus = Brewery.create name: "BrewDog", year: 2007 
+  TRANSACTION (0.1ms)  begin transaction
+  Brewery Create (0.3ms)  INSERT INTO "breweries" ("name", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "BrewDog"], ["year", 2007], ["created_at", "2023-07-14 10:44:06.769329"], ["updated_at", "2023-07-14 10:44:06.769329"]]
+
+  TRANSACTION (0.1ms)  begin transaction
+  Brewery Load (0.4ms)  SELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+  Beer Create (0.5ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Punk IPA"], ["style", "IPA"], ["brewery_id", 5], ["created_at", "2023-07-14 10:46:19.438224"], ["updated_at", "2023-07-14 10:46:19.438224"]]
+  TRANSACTION (13.6ms)  commit transaction
+=> 
+#<Beer:0x00007fa5a63656c0
+ id: 15,
+ name: "Punk IPA",
+id: uus.id
+  TRANSACTION (0.1ms)  begin transaction
+  Brewery Load (0.2ms)  SELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+  Beer Create (0.5ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Nanny State"], ["style", "lowalcohol"], ["brewery_id", 5], ["created_at", "2023-07-14 10:46:41.828615"], ["updated_at", "2023-07-14 10:46:41.828615"]]
+  TRANSACTION (13.3ms)  commit transaction
+=> 
+#<Beer:0x00007fa5a72a7048
+ id: 16,
+ name: "Nanny State",
+ style: "lowalcohol",
+= ?  [["brewery_id", 5]]
+  brewery_id: 5,
+  style: "lowalcohol",
+  brewery_id: 5,
+  created_at: Fri, 14 Jul 2023 10:46:41.828615000 UTC +00:00,
+  updated_at: Fri, 14 Jul 2023 10:46:41.828615000 UTC +00:00>]
+irb(main):014:0> eka = Bee
+(irb):14:in `<main>': uninitialized constant Bee (NameError)
+
+eka = Bee
+      ^^^
+irb(main):015:0> eka = Beer.find 16
+  Beer Load (0.2ms)  SELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?  [["id", 16], ["LIMIT", 1]]
+=> 
+#<Beer:0x00007fa5a60888f8
+...
+irb(main):016:0> eka.ratings.create score: 32
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.2ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 32], ["beer_id", 16], ["created_at", "2023-07-14 10:50:55.227250"], ["updated_at", "2023-07-14 10:50:55.227250"]]
+  TRANSACTION (12.2ms)  commit transaction
+#<Rating:0x00007fa5a6325638
+ id: 4,
+ score: 32,
+ beer_id: 16,
+ created_at: Fri, 14 Jul 2023 10:50:55.227250000 UTC +00:00,
+ updated_at: Fri, 14 Jul 2023 10:50:55.227250000 UTC +00:00>
+irb(main):017:0> eka.ratings.create score: 11
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.3ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 11], ["beer_id", 16], ["created_at", "2023-07-14 10:51:03.708764"], ["updated_at", "2023-07-14 10:51:03.708764"]]
+  TRANSACTION (12.4ms)  commit transaction
+ created_at: Fri, 14 Jul 2023 10:51:03.708764000 UTC +00:00,
+ted_at", "2023-07-14 10:51:09.541635"], ["updated_at", "2023-07-14 10:51:09.541635"]]
+  TRANSACTION (12.2ms)  commit transaction
+=> 
+#<Rating:0x00007fa5a71e4660
+ id: 6,
+ score: 47,
+ beer_id: 16,
+ created_at: Fri, 14 Jul 2023 10:51:09.541635000 UTC +00:00,
+irb(main):019:0> toka = Beer.find 15
+  Beer Load (0.1ms)  SELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?  [["id", 15], ["LIMIT", 1]]
+=> 
+#<Beer:0x00007fa5a5b00700
+...
+irb(main):020:0> toka.ratings.create score: 22
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.2ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 22], ["beer_id", 15], ["created_at", "2023-07-14 10:51:58.175203"], ["updated_at", "2023-07-14 10:51:58.175203"]]
+  TRANSACTION (12.4ms)  commit transaction
+#<Rating:0x00007fa5a7214ae0
+ id: 7,
+ score: 22,
+ beer_id: 15,
+ created_at: Fri, 14 Jul 2023 10:51:58.175203000 UTC +00:00,
+ updated_at: Fri, 14 Jul 2023 10:51:58.175203000 UTC +00:00>
+irb(main):021:0> toka.ratings.create score: 15
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.2ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 15], ["beer_id", 15], ["created_at", "2023-07-14 10:52:01.467442"], ["updated_at", "2023-07-14 10:52:01.467442"]]
+  TRANSACTION (12.4ms)  commit transaction
+=> 
+#<Rating:0x00007fa5a714dbc0
+ id: 8,
+ score: 15,
+ beer_id: 15,
+ created_at: Fri, 14 Jul 2023 10:52:01.467442000 UTC +00:00,
+ updated_at: Fri, 14 Jul 2023 10:52:01.467442000 UTC +00:00>
+irb(main):022:0> toka.ratings.create score: 37
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.5ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 37], ["beer_id", 15], ["created_at", "2023-07-14 10:52:04.598077"], ["updated_at", "2023-07-14 10:52:04.598077"]]
+  TRANSACTION (13.4ms)  commit transaction
+=> 
+#<Rating:0x00007fa5a5bb8c10
+ id: 9,
+ score: 37,
+ beer_id: 15,
+ created_at: Fri, 14 Jul 2023 10:52:04.598077000 UTC +00:00,
+ updated_at: Fri, 14 Jul 2023 10:52:04.598077000 UTC +00:00>
+irb(main):023:0> 
