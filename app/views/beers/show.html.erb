@@ -3,7 +3,11 @@
 <%= render @beer %>
 
 <% if @beer.ratings.present? %>
-  <p>Beer has <%= @beer.ratings.size %> ratings with an average of <%= @beer.average_rating.to_f.round(2) %></p>
+  <p>
+    <%= "Beer #{'has' if @beer.ratings.size == 1 || @beer.ratings.empty? || !@beer.ratings} #{'have' if @beer.ratings.size > 1} #{pluralize(@beer.ratings.size, 'rating')}" %> with an average of <%= @beer.average_rating.to_f.round(2) %>
+  </p>
+
+
 <% else %>
   <p>This beer has no ratings yet.</p>
 <% end %>
