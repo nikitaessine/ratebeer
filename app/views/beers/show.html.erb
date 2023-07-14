@@ -2,6 +2,13 @@
 
 <%= render @beer %>
 
+<% if @beer.ratings.present? %>
+  <p>Beer has <%= @beer.ratings.size %> ratings with an average of <%= @beer.average_rating.to_f.round(2) %></p>
+<% else %>
+  <p>This beer has no ratings yet.</p>
+<% end %>
+
+
 <div>
   <%= link_to "Edit this beer", edit_beer_path(@beer) %> |
   <%= link_to "Back to beers", beers_path %>
