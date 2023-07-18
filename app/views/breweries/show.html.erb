@@ -2,6 +2,21 @@
 
 <%= render @brewery %>
 
+<% if @brewery.ratings.present? %>
+  <p>
+    Brewery
+    <% if @brewery.ratings.size == 1 %>
+      has
+    <% else %>
+      have
+    <% end %>
+    <%= pluralize(@brewery.ratings.size, 'rating') %>
+    with an average of <%= @brewery.average_rating.to_f.round(2) %>.
+  </p>
+<% else %>
+  <p>Brewery has no ratings.</p>
+<% end %>
+
 <div>
   <%= link_to "Edit this brewery", edit_brewery_path(@brewery) %> |
   <%= link_to "Back to breweries", breweries_path %> | <%= link_to 'list of beers', beers_path %>

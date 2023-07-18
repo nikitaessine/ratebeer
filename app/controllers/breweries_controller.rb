@@ -10,6 +10,9 @@ class BreweriesController < ApplicationController
 
   # GET /breweries/1 or /breweries/1.json
   def show
+    @brewery = Brewery.find(params[:id])
+    @ratings_count = @brewery.ratings.count
+    @average_rating = @brewery.average_rating
   end
 
   # GET /breweries/new
