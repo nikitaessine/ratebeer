@@ -14,7 +14,6 @@ class BeersController < ApplicationController
   def new
     @beer = Beer.new
   end
-
   # GET /beers/1/edit
   def edit
   end
