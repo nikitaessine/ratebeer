@@ -11962,3 +11962,9 @@ Processing by BreweriesController#show as HTML
 Completed 200 OK in 36ms (Views: 17.8ms | ActiveRecord: 1.8ms | Allocations: 9695)
 
 
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers" ORDER BY "beers"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRating Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."beer_id" = ?[0m  [["beer_id", 1]]
+  [1m[36mRating Sum (0.1ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" WHERE "ratings"."beer_id" = ?[0m  [["beer_id", 1]]
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" ORDER BY "breweries"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRating Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  [1m[36mRating Sum (0.1ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
