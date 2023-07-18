@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :brewery_id, style: "display: block" %>
-    <%= form.number_field :brewery_id %>
+    <%= form.collection_select :brewery_id, Brewery.all, :id, :name %>
   </div>
 
   <div>
