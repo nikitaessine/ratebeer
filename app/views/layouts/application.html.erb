@@ -15,12 +15,24 @@
     <%= link_to 'breweries', breweries_path %>
     <%= link_to 'beers', beers_path %>
     <%= link_to 'ratings', ratings_path %>
+
+    <% if current_user %>
+      <%= link_to 'users', users_path %>
+      <%= link_to current_user.username, user_path(current_user) %>
+      <%= link_to 'Rate a New Beer', new_beer_path %>
+      <%= link_to 'Sign out', signout_path, data: {
+ "turbo-method": :delete
+} %>
+    <% else %>
+      <%= link_to 'Sign in', signin_path %>
+    <% end %>
+    
     </div>
 
-    <% if not session[:user_id].nil? %>
-      <p><%= User.find(session[:user_id]).username %> signed in</p>
+    <% if current_user %>
+      <p><%= current_user.username %> signed in</p>
     <% end %>
-
+    
     <%= yield %>
 
   </body>
