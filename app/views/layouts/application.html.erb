@@ -19,7 +19,7 @@
 
     <% if current_user %>
       <%= link_to current_user.username, user_path(current_user) %>
-      <%= link_to 'Rate a New Beer', new_beer_path %>
+      <%= link_to 'Rate a New Beer', new_rating_path %>
       <%= link_to 'Sign out', signout_path, data: {
  "turbo-method": :delete
 } %>

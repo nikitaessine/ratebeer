@@ -1,2 +1,6 @@
 class User < ApplicationRecord
-end
+    include RatingAverage
+
+    has_many :ratings   # käyttäjällä on monta ratingia
+
+  end
