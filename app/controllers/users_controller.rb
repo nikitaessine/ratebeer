@@ -8,6 +8,13 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @user = User.find(params[:id])
+    
+    if current_user == @user
+      @editable = true
+    else
+      @editable = false
+    end
   end
 
   # GET /users/new
@@ -36,24 +43,41 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    @user = User.find(params[:id])
+    
+    # Check if the logged-in user is updating their own data
+    if current_user == @user
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
     end
   end
 
   # DELETE /users/1 or /users/1.json
-  def destroy
-    @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+  def destroy
+    @user = User.find(params[:id])
+    
+    # Check if the logged-in user is deleting their own data
+    if current_user == @user
+      @user.destroy
+
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+        format.json { head :no_content }
+    end
+    else
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
     end
   end
 
