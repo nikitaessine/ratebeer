@@ -43,22 +43,14 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    @user = User.find(params[:id])
-    
-    # Check if the logged-in user is updating their own data
-    if current_user == @user
-      respond_to do |format|
-        if @user.update(user_params)
-          format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if user_params[:username].nil? and @user == current_user and @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    else
-      flash[:alert] = "You are not authorized to perform this action."
-      redirect_to root_path
     end
   end
 
@@ -66,11 +58,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    
-    if current_user == @user
+      if current_user == @user
 
       reset_session
-      
+
       @user.destroy
 
       respond_to do |format|
