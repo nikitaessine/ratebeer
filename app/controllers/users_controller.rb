@@ -67,8 +67,10 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     
-    # Check if the logged-in user is deleting their own data
     if current_user == @user
+
+      reset_session
+      
       @user.destroy
 
       respond_to do |format|
@@ -83,12 +85,10 @@ class UsersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)
   end
