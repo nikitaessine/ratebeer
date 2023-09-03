@@ -7,7 +7,7 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 4 }
     validate :password_complexity
   
-    has_many :ratings
+    has_many :ratings, dependent: :destroy
     has_many :beers, through: :ratings
   
     private
