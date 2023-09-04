@@ -31660,3 +31660,30 @@ Processing by UsersController#edit as HTML
 Completed 200 OK in 24ms (Views: 19.0ms | ActiveRecord: 0.4ms | Allocations: 8861)
 
 
+Started GET "/" for 127.0.0.1 at 2023-09-04 13:58:18 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 6337)
+  Rendered layout layouts/application.html.erb (Duration: 117.1ms | Allocations: 41579)
+Completed 200 OK in 133ms (Views: 118.4ms | ActiveRecord: 0.8ms | Allocations: 48287)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-04 14:04:42 +0300
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 3172)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 16957)
+Completed 200 OK in 19ms (Views: 15.5ms | ActiveRecord: 0.5ms | Allocations: 19368)
+
+
