@@ -36,29 +36,37 @@ describe "User" do
 end
 
 describe "User's Ratings" do
-  before :each do
-    @user = FactoryBot.create(:user, username: "Kalle", password: "Foobar1")
-    @user2 = FactoryBot.create(:user, username: "Anna", password: "Password1", password_confirmation: "Password1")
+    before :each do
+        @user = FactoryBot.create(:user, username: "Kalle", password: "Foobar1")
+        @user2 = FactoryBot.create(:user, username: "Anna", password: "Password1", password_confirmation: "Password1")
 
-    @beer1 = FactoryBot.create(:beer, name: "Beer 1")
-    @beer2 = FactoryBot.create(:beer, name: "Beer 2")
+        @beer1 = FactoryBot.create(:beer, name: "Beer 1")
+        @beer2 = FactoryBot.create(:beer, name: "Beer 2")
 
-    FactoryBot.create(:rating, score: 4, user: @user, beer: @beer1)
-    FactoryBot.create(:rating, score: 3, user: @user, beer: @beer2)
+        FactoryBot.create(:rating, score: 4, user: @user, beer: @beer1)
+        FactoryBot.create(:rating, score: 3, user: @user, beer: @beer2)
 
-    FactoryBot.create(:rating, score: 5, user: @user2, beer: @beer1)
+        FactoryBot.create(:rating, score: 5, user: @user2, beer: @beer1)
 
-    sign_in(username: "Kalle", password: "Foobar1")
-  end
+        sign_in(username: "Kalle", password: "Foobar1")
+    end
 
-  it "displays user's own ratings but not other users'" do
-    visit user_path(@user)
+    it "displays user's own ratings but not other users'" do
+        visit user_path(@user)
 
-    save_and_open_page
-    expect(page).to have_content "Beer 1 4"
-    expect(page).to have_content "Beer 2 3"
+        expect(page).to have_content "Beer 1 4"
+        expect(page).to have_content "Beer 2 3"
 
-    expect(page).not_to have_content "Beer 1 5"
-  end
+        expect(page).not_to have_content "Beer 1 5"
+    end
+
+    it "can be deleted by user" do
+        visit user_path(@user)
+    
+        expect {
+          find('a[data-turbo-method="delete"][href="/ratings/1"]').click
+        }.to change { @user.ratings.count }.from(2).to(1)
+    end
+    
 end
 
