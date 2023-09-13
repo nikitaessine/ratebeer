@@ -1,3 +1,4 @@
+
 # This workflow uses actions that are not certified by GitHub. They are
 # provided by a third-party and are governed by separate terms of service,
 # privacy policy, and support documentation.
@@ -31,7 +32,7 @@ jobs:
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
-        with:
+        with: 
           bundler-cache: true
       - name: Run tests
         run: bundle exec rspec
