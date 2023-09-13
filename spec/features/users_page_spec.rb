@@ -62,9 +62,9 @@ describe "User's Ratings" do
 
     it "can be deleted by user" do
         visit user_path(@user)
-    
+
         expect {
-          find('a[data-turbo-method="delete"][href="/ratings/1"]').click
+            find(:xpath, "(//a[text()='Delete'])[1]").click
         }.to change { @user.ratings.count }.from(2).to(1)
     end
     
