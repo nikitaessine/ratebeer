@@ -95,6 +95,11 @@ GEM
     dockerfile-rails (1.5.1)
       rails
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -108,6 +113,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -251,14 +258,16 @@ DEPENDENCIES
   capybara
   debug
   dockerfile-rails (>= 1.5)
+  factory_bot_rails
   importmap-rails
   jbuilder
+  launchy
   pg
   pry-byebug
   puma (~> 5.0)
   rails (~> 7.0.4)
   redis (~> 5.0)
-  rspec-rails (~> 6.0.0)
+  rspec-rails (~> 6.0.0.rc1)
   selenium-webdriver
   sprockets-rails
   sqlite3
