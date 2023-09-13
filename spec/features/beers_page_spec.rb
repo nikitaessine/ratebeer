@@ -14,7 +14,6 @@ RSpec.describe "Beers", type: :feature do
     select 'Lahden panimo', from: 'beer_brewery_id'
 
     click_button 'Create Beer'
-    save_and_open_page
 
     expect(page).to have_content 'Beer was successfully created.'
   end
@@ -25,7 +24,6 @@ RSpec.describe "Beers", type: :feature do
     select 'Lahden panimo', from: 'beer_brewery_id'
 
     click_button 'Create Beer'
-    save_and_open_page
 
     expect(page).to have_content "Name can't be blank"
     expect(page).to have_content 'New beer'

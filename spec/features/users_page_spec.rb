@@ -12,7 +12,7 @@ describe "User" do
       sign_in(username: "Pekka", password: "Foobar1")
 
       expect(page).to have_content 'Welcome back!'
-      expect(page).to have_content @user.username
+      expect(page).to have_content 'Pekka'
     end
 
     it "is redirected back to signin form if wrong credentials given" do

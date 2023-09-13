@@ -33,7 +33,6 @@ describe "Rating" do
       FactoryBot.create(:rating, user: user, score: 35)
   
     visit ratings_path
-    save_and_open_page
     Rating.all.each do |r|
         expect(page).to have_content r.score
         expect(page).to have_content r.user.username
