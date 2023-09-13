@@ -33,5 +33,20 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Run tests
-        run: bundle exec rspec
+      - name: Install Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+
+      - name: Configure Environment
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/chromium-browser
+        run: echo "CHROMIUM_EXECUTABLE=/usr/bin/chromium-browser" >> $GITHUB_ENV
+
+      - name: Bundle Install
+        run: bundle install
+
+      - name: Run Tests with Headless Browser
+        run: |
+          export BROWSER=/usr/bin/chromium-browser # Set the headless browser for Capybara
+          bundle exec rspec
