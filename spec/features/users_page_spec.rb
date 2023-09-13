@@ -9,10 +9,10 @@ describe "User" do
 
   describe "who has signed up" do
     it "can signin with right credentials" do
-      sign_in(username: "Pekka", password: "Foobar1")
+      sign_in(username: "Kalle", password: "Foobar1")
 
       expect(page).to have_content ('Welcome back!')
-      expect(page).to have_content 'Pekka'
+      expect(page).to have_content 'Kalle'
     end
 
     it "is redirected back to signin form if wrong credentials given" do
