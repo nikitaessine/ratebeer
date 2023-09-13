@@ -34,3 +34,31 @@ describe "User" do
     }.to change{User.count}.by(1)
   end
 end
+
+describe "User's Ratings" do
+  before :each do
+    @user = FactoryBot.create(:user, username: "Kalle", password: "Foobar1")
+    @user2 = FactoryBot.create(:user, username: "Anna", password: "Password1", password_confirmation: "Password1")
+
+    @beer1 = FactoryBot.create(:beer, name: "Beer 1")
+    @beer2 = FactoryBot.create(:beer, name: "Beer 2")
+
+    FactoryBot.create(:rating, score: 4, user: @user, beer: @beer1)
+    FactoryBot.create(:rating, score: 3, user: @user, beer: @beer2)
+
+    FactoryBot.create(:rating, score: 5, user: @user2, beer: @beer1)
+
+    sign_in(username: "Kalle", password: "Foobar1")
+  end
+
+  it "displays user's own ratings but not other users'" do
+    visit user_path(@user)
+
+    save_and_open_page
+    expect(page).to have_content "Beer 1 4"
+    expect(page).to have_content "Beer 2 3"
+
+    expect(page).not_to have_content "Beer 1 5"
+  end
+end
+
