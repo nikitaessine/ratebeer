@@ -32618,3 +32618,940 @@ Processing by BeersController#new as HTML
 Completed 200 OK in 27ms (Views: 24.6ms | ActiveRecord: 0.4ms | Allocations: 6329)
 
 
+Started GET "/beers/new" for 127.0.0.1 at 2023-09-13 10:45:38 +0300
+Processing by BeersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering beers/new.html.erb within layouts/application
+  [1m[36mBrewery Load (0.4ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/beers/_form.html.erb:26
+  Rendered beers/_form.html.erb (Duration: 12.1ms | Allocations: 2230)
+  Rendered beers/new.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2321)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 4688)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 1.5ms | Allocations: 5030)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-13 10:45:52 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 6476)
+  Rendered layout layouts/application.html.erb (Duration: 77.8ms | Allocations: 41644)
+Completed 200 OK in 92ms (Views: 79.4ms | ActiveRecord: 0.9ms | Allocations: 48350)
+
+
+Started GET "/signup" for 127.0.0.1 at 2023-09-13 10:46:02 +0300
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 6.0ms | Allocations: 2964)
+  Rendered users/new.html.erb within layouts/application (Duration: 7.1ms | Allocations: 3344)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 5922)
+Completed 200 OK in 28ms (Views: 12.6ms | ActiveRecord: 0.7ms | Allocations: 11047)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-09-13 10:46:14 +0300
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"Borna", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `block in create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Borna"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `block in create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "password_digest") VALUES (?, ?, ?, ?)[0m  [["username", "Borna"], ["created_at", "2023-09-13 07:46:14.754893"], ["updated_at", "2023-09-13 07:46:14.754893"], ["password_digest", "[FILTERED]"]]
+  ↳ app/controllers/users_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `block in create'
+Redirected to http://127.0.0.1:3000/users/15
+Completed 302 Found in 236ms (ActiveRecord: 12.3ms | Allocations: 6567)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2023-09-13 10:46:14 +0300
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:76:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 197)
+  [1m[36mRating Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Load (0.1ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:8
+  Rendered users/show.html.erb within layouts/application (Duration: 11.8ms | Allocations: 7415)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 9942)
+Completed 200 OK in 18ms (Views: 14.7ms | ActiveRecord: 0.6ms | Allocations: 12342)
+
+
+Started GET "/beers" for 127.0.0.1 at 2023-09-13 10:46:21 +0300
+Processing by BeersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering beers/index.html.erb within layouts/application
+  [1m[36mBeer Load (0.2ms)[0m  [1m[34mSELECT "beers".* FROM "beers"[0m
+  ↳ app/views/beers/index.html.erb:6
+  [1m[36mBrewery Load (0.2ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 25.5ms | Allocations: 3039)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 9.6ms | Allocations: 718)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 16.1ms | Allocations: 704)
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.8ms | Allocations: 749)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.9ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.5ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.4ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.5ms | Allocations: 705)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.2ms | Allocations: 704)
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.4ms | Allocations: 749)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.4ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.3ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.5ms | Allocations: 704)
+  Rendered beers/index.html.erb within layouts/application (Duration: 95.9ms | Allocations: 16819)
+  Rendered layout layouts/application.html.erb (Duration: 99.4ms | Allocations: 19437)
+Completed 200 OK in 106ms (Views: 99.9ms | ActiveRecord: 1.2ms | Allocations: 21932)
+
+
+Started GET "/beers/new" for 127.0.0.1 at 2023-09-13 10:46:25 +0300
+Processing by BeersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering beers/new.html.erb within layouts/application
+  [1m[36mBrewery Load (0.3ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/beers/_form.html.erb:26
+  Rendered beers/_form.html.erb (Duration: 15.0ms | Allocations: 3020)
+  Rendered beers/new.html.erb within layouts/application (Duration: 17.6ms | Allocations: 3345)
+  Rendered layout layouts/application.html.erb (Duration: 23.0ms | Allocations: 5831)
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.3ms | Allocations: 6280)
+
+
+Started POST "/beers" for 127.0.0.1 at 2023-09-13 10:46:43 +0300
+Processing by BeersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "beer"=>{"name"=>"Hyvä bisse", "style"=>"Lager", "brewery_id"=>"1"}, "commit"=>"Create Beer"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/beers_controller.rb:28:in `block in create'
+  [1m[36mBrewery Load (0.2ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/beers_controller.rb:28:in `block in create'
+  [1m[36mBeer Create (0.5ms)[0m  [1m[32mINSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hyvä bisse"], ["style", "Lager"], ["brewery_id", 1], ["created_at", "2023-09-13 07:46:43.403601"], ["updated_at", "2023-09-13 07:46:43.403601"]]
+  ↳ app/controllers/beers_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (12.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/beers_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/beers
+Completed 302 Found in 32ms (ActiveRecord: 13.5ms | Allocations: 3756)
+
+
+Started GET "/beers" for 127.0.0.1 at 2023-09-13 10:46:43 +0300
+Processing by BeersController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering beers/index.html.erb within layouts/application
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers"[0m
+  ↳ app/views/beers/index.html.erb:6
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.6ms | Allocations: 770)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.7ms | Allocations: 706)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.2ms | Allocations: 704)
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.2ms | Allocations: 749)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.1ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.0ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.0ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.5ms | Allocations: 705)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.7ms | Allocations: 704)
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.8ms | Allocations: 749)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.3ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.1ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.8ms | Allocations: 704)
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 1.6ms | Allocations: 706)
+  Rendered beers/index.html.erb within layouts/application (Duration: 23.4ms | Allocations: 11879)
+  Rendered layout layouts/application.html.erb (Duration: 26.5ms | Allocations: 14250)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.6ms | Allocations: 14557)
+
+
+Started GET "/beers/24" for 127.0.0.1 at 2023-09-13 10:46:45 +0300
+Processing by BeersController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/beers_controller.rb:70:in `set_beer'
+  Rendering layout layouts/application.html.erb
+  Rendering beers/show.html.erb within layouts/application
+  [1m[36mBrewery Load (0.4ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 6.5ms | Allocations: 756)
+  [1m[36mRating Load (0.4ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."beer_id" = ?[0m  [["beer_id", 24]]
+  ↳ app/views/beers/show.html.erb:5
+  Rendered beers/show.html.erb within layouts/application (Duration: 27.1ms | Allocations: 3520)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 5878)
+Completed 200 OK in 43ms (Views: 36.6ms | ActiveRecord: 1.2ms | Allocations: 7349)
+
+
+Started GET "/beers/24/edit" for 127.0.0.1 at 2023-09-13 10:46:49 +0300
+Processing by BeersController#edit as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/beers_controller.rb:70:in `set_beer'
+  Rendering layout layouts/application.html.erb
+  Rendering beers/edit.html.erb within layouts/application
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/beers/_form.html.erb:26
+  Rendered beers/_form.html.erb (Duration: 3.0ms | Allocations: 2137)
+  Rendered beers/edit.html.erb within layouts/application (Duration: 11.1ms | Allocations: 2412)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 4770)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.2ms | Allocations: 5581)
+
+
+Started GET "/beers/24" for 127.0.0.1 at 2023-09-13 10:46:51 +0300
+Processing by BeersController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/beers_controller.rb:70:in `set_beer'
+  Rendering layout layouts/application.html.erb
+  Rendering beers/show.html.erb within layouts/application
+  [1m[36mBrewery Load (0.4ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/beers/_beer.html.erb:14
+  Rendered beers/_beer.html.erb (Duration: 6.4ms | Allocations: 755)
+  [1m[36mRating Load (0.2ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."beer_id" = ?[0m  [["beer_id", 24]]
+  ↳ app/views/beers/show.html.erb:5
+  Rendered beers/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 1935)
+  Rendered layout layouts/application.html.erb (Duration: 19.1ms | Allocations: 4293)
+Completed 200 OK in 27ms (Views: 20.0ms | ActiveRecord: 1.0ms | Allocations: 5028)
+
+
+Started GET "/ratings" for 127.0.0.1 at 2023-09-13 10:46:53 +0300
+Processing by RatingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ratings/index.html.erb within layouts/application
+  [1m[36mRating Load (0.3ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings"[0m
+  ↳ app/views/ratings/index.html.erb:4
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 4.0ms | Allocations: 2331)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.3ms | Allocations: 635)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.2ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.5ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.4ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.0ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.3ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.3ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.0ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.0ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 0.8ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 0.8ms | Allocations: 633)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 0.8ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 0.9ms | Allocations: 679)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.1ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  Rendered ratings/index.html.erb within layouts/application (Duration: 56.3ms | Allocations: 27500)
+  Rendered layout layouts/application.html.erb (Duration: 59.9ms | Allocations: 30322)
+Completed 200 OK in 63ms (Views: 60.3ms | ActiveRecord: 1.6ms | Allocations: 31166)
+
+
+Started GET "/ratings/new" for 127.0.0.1 at 2023-09-13 10:46:59 +0300
+Processing by RatingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ratings/new.html.erb within layouts/application
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers"[0m
+  ↳ app/views/ratings/new.html.erb:16
+  [1m[36mBrewery Load (0.2ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  Rendered ratings/new.html.erb within layouts/application (Duration: 30.4ms | Allocations: 11201)
+  Rendered layout layouts/application.html.erb (Duration: 34.6ms | Allocations: 13707)
+Completed 200 OK in 38ms (Views: 35.6ms | ActiveRecord: 1.0ms | Allocations: 14108)
+
+
+Started POST "/ratings" for 127.0.0.1 at 2023-09-13 10:47:20 +0300
+Processing by RatingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "rating"=>{"beer_id"=>"24", "score"=>"15"}, "commit"=>"Create Rating"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/ratings_controller.rb:15:in `create'
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/ratings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/ratings_controller.rb:15:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering ratings/new.html.erb within layouts/application
+  [1m[36mBeer Load (0.2ms)[0m  [1m[34mSELECT "beers".* FROM "beers"[0m
+  ↳ app/views/ratings/new.html.erb:16
+  [1m[36mBrewery Load (0.2ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  Rendered ratings/new.html.erb within layouts/application (Duration: 24.5ms | Allocations: 10851)
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 13213)
+Completed 422 Unprocessable Entity in 44ms (Views: 28.5ms | ActiveRecord: 1.4ms | Allocations: 16645)
+
+
+Started GET "/signin" for 127.0.0.1 at 2023-09-13 10:47:23 +0300
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1810)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 4397)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.0ms | Allocations: 5184)
+
+
+Started POST "/session" for 127.0.0.1 at 2023-09-13 10:47:31 +0300
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "username"=>"Borna", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Borna"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://127.0.0.1:3000/users/15
+Completed 302 Found in 220ms (ActiveRecord: 0.5ms | Allocations: 1181)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2023-09-13 10:47:32 +0300
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:76:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.0ms | Allocations: 19)
+  [1m[36mRating Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Load (0.0ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:8
+  Rendered users/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2278)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 6952)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.3ms | Allocations: 8777)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-09-13 10:47:35 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 17)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1926)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 6650)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.7ms | Allocations: 7017)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2023-09-13 10:47:38 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:76:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 17)
+  [1m[36mRating Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Load (0.2ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:8
+  Rendered users/show.html.erb within layouts/application (Duration: 11.6ms | Allocations: 2206)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | Allocations: 6877)
+Completed 200 OK in 35ms (Views: 24.0ms | ActiveRecord: 1.4ms | Allocations: 8686)
+
+
+Started GET "/ratings" for 127.0.0.1 at 2023-09-13 10:47:40 +0300
+Processing by RatingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ratings/index.html.erb within layouts/application
+  [1m[36mRating Load (0.3ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings"[0m
+  ↳ app/views/ratings/index.html.erb:4
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 5.0ms | Allocations: 678)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 2.6ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 2.4ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 2.6ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.8ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 2.0ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.6ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.2ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.6ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.3ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.0ms | Allocations: 679)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.5ms | Allocations: 633)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.3ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.3ms | Allocations: 679)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/ratings/_rating.html.erb:1
+  Rendered ratings/_rating.html.erb (Duration: 1.3ms | Allocations: 633)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ratings/index.html.erb:6
+  Rendered ratings/index.html.erb within layouts/application (Duration: 63.3ms | Allocations: 21205)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 70.7ms | Allocations: 26111)
+Completed 200 OK in 72ms (Views: 69.0ms | ActiveRecord: 2.5ms | Allocations: 26386)
+
+
+Started GET "/ratings/new" for 127.0.0.1 at 2023-09-13 10:47:41 +0300
+Processing by RatingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ratings/new.html.erb within layouts/application
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers"[0m
+  ↳ app/views/ratings/new.html.erb:16
+  [1m[36mBrewery Load (0.3ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mBrewery Load (0.2ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/beer.rb:16:in `to_s'
+  Rendered ratings/new.html.erb within layouts/application (Duration: 35.3ms | Allocations: 10578)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 43.5ms | Allocations: 15299)
+Completed 200 OK in 46ms (Views: 43.2ms | ActiveRecord: 1.3ms | Allocations: 15593)
+
+
+Started POST "/ratings" for 127.0.0.1 at 2023-09-13 10:47:45 +0300
+Processing by RatingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "rating"=>{"beer_id"=>"24", "score"=>"15"}, "commit"=>"Create Rating"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/ratings_controller.rb:15:in `create'
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/ratings_controller.rb:15:in `create'
+  [1m[36mRating Create (0.4ms)[0m  [1m[32mINSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", 15], ["beer_id", 24], ["created_at", "2023-09-13 07:47:45.583623"], ["updated_at", "2023-09-13 07:47:45.583623"], ["user_id", 15]]
+  ↳ app/controllers/ratings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (18.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/ratings_controller.rb:15:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Redirected to http://127.0.0.1:3000/users/15
+Completed 302 Found in 46ms (ActiveRecord: 20.3ms | Allocations: 4264)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2023-09-13 10:47:45 +0300
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:76:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 17)
+  [1m[36mRating Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Sum (0.1ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:8:in `average_rating'
+  [1m[36mRating Load (0.1ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered users/show.html.erb within layouts/application (Duration: 9.0ms | Allocations: 4025)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 8707)
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 0.8ms | Allocations: 10525)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-09-13 10:47:55 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered users/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1680)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 6408)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.3ms | Allocations: 6682)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2023-09-13 10:47:56 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:76:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.0ms | Allocations: 17)
+  [1m[36mRating Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Sum (0.0ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:8:in `average_rating'
+  [1m[36mRating Load (0.1ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mBeer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered users/show.html.erb within layouts/application (Duration: 24.5ms | Allocations: 15803)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 31.1ms | Allocations: 20483)
+Completed 200 OK in 34ms (Views: 30.6ms | ActiveRecord: 1.1ms | Allocations: 22266)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2023-09-13 10:48:07 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:76:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 17)
+  [1m[36mRating Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Sum (0.1ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:8:in `average_rating'
+  [1m[36mRating Load (0.2ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/models/rating.rb:8:in `to_s'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered users/show.html.erb within layouts/application (Duration: 15.2ms | Allocations: 3973)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 23.8ms | Allocations: 8642)
+Completed 200 OK in 38ms (Views: 23.9ms | ActiveRecord: 1.9ms | Allocations: 10440)
+
+
+Started DELETE "/ratings/30" for 127.0.0.1 at 2023-09-13 10:48:09 +0300
+Processing by RatingsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"30"}
+  [1m[36mRating Load (0.4ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/ratings_controller.rb:24:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/ratings_controller.rb:25:in `destroy'
+  [1m[36mRating Destroy (13.3ms)[0m  [1m[31mDELETE FROM "ratings" WHERE "ratings"."id" = ?[0m  [["id", 30]]
+  ↳ app/controllers/ratings_controller.rb:25:in `destroy'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Redirected to http://127.0.0.1:3000/users/15
+Completed 302 Found in 29ms (ActiveRecord: 14.3ms | Allocations: 3371)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2023-09-13 10:48:09 +0300
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:76:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 17)
+  [1m[36mRating Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Load (0.1ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/views/users/show.html.erb:8
+  Rendered users/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2209)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 6879)
+Completed 200 OK in 20ms (Views: 15.7ms | ActiveRecord: 0.6ms | Allocations: 8684)
+
+
