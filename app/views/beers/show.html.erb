@@ -4,8 +4,8 @@
 
 <% if @beer.ratings.present? %>
   <p>
-    <%= "Beer #{'has' if @beer.ratings.size == 1 || @beer.ratings.empty? || !@beer.ratings} #{'have' if @beer.ratings.size > 1} #{pluralize(@beer.ratings.size, 'rating')}" %> with an average of <%= @beer.average_rating.to_f.round(2) %>
-  </p>
+    <%= 
+  </p>"Beer #{'has' if @beer.ratings.size == 1 || @beer.ratings.empty? || !@beer.ratings} #{'have' if @beer.ratings.size > 1} #{pluralize(@beer.ratings.size, 'rating')}" %> with an average of <%= @beer.average_rating.to_f.round(2) %>
 
 
 <% else %>
@@ -14,8 +14,9 @@
 
 
 <div>
-  <%= link_to "Edit this beer", edit_beer_path(@beer) %> |
-  <%= link_to "Back to beers", beers_path %>
-
-  <%= button_to "Destroy this beer", @beer, method: :delete %>
+  <% if current_user %>
+    <%= link_to "Edit this beer", edit_beer_path(@beer) %> |
+    <%= link_to "Back to beers", beers_path %>
+    <%= button_to "Destroy this beer", @beer, method: :delete %>
+  <% end %>
 </div>
