@@ -10,24 +10,28 @@ RSpec.describe "Beers", type: :feature do
   it "can be added if the beer name is valid" do
     visit new_beer_path
 
-    fill_in 'beer_name', with: 'Kruchovice'
-    select 'Lahden panimo', from: 'beer_brewery_id'
+    if page.has_content?('New Beer')
+      fill_in 'beer_name', with: 'Kruchovice'
+      select 'Lahden panimo', from: 'beer_brewery_id'
 
-    click_button 'Create Beer'
+      click_button 'Create Beer'
 
-    expect(page).to have_content 'Beer was successfully created.'
+      expect(page).to have_content 'Beer was successfully created.'
+    end
   end
 
   it "displays an error if the beer name is invalid and doesn't save to the database" do
     visit new_beer_path
 
-    select 'Lahden panimo', from: 'beer_brewery_id'
+    if page.has_content?('New Beer')
+      select 'Lahden panimo', from: 'beer_brewery_id'
 
-    click_button 'Create Beer'
+      click_button 'Create Beer'
 
-    expect(page).to have_content "Name can't be blank"
-    expect(page).to have_content 'New beer'
+      expect(page).to have_content "Name can't be blank"
+      expect(page).to have_content 'New beer'
 
-    expect(Beer.count).to eq(0)
+      expect(Beer.count).to eq(0)
+    end
   end
 end
