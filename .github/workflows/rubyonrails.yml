@@ -63,4 +63,4 @@ jobs:
       - name: RuboCop Linter Action
         uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #test
