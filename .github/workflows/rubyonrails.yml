@@ -60,13 +60,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Install packages
-        run: |
-          yarn install --pure-lockfile
-
-      - name: Run linters
-        run: |
-          bin/rubocop --parallel
-          bin/stylelint
-          bin/prettier
-          bin/eslint
+      - name: Lint Action
+        uses: wearerequired/lint-action@v2.3.0    
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #test
