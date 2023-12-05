@@ -81,6 +81,8 @@ group :test do
   gem "webdrivers"
   gem 'launchy'
 
+  gem 'webmock'
+
   gem 'simplecov', require: false
 end
 
@@ -89,3 +91,5 @@ gem "dockerfile-rails", ">= 1.5", :group => :development
 gem "redis", "~> 5.0"
 
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'httparty'

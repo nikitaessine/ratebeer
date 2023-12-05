@@ -35012,3 +35012,756 @@ Processing by BreweriesController#show as HTML
 Completed 200 OK in 31ms (Views: 14.6ms | ActiveRecord: 2.0ms | Allocations: 9544)
 
 
+Started GET "/" for 127.0.0.1 at 2023-09-20 13:47:23 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 6310)
+  Rendered layout layouts/application.html.erb (Duration: 53.0ms | Allocations: 41582)
+Completed 200 OK in 81ms (Views: 54.8ms | ActiveRecord: 0.5ms | Allocations: 48293)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-20 14:07:48 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 6460)
+  Rendered layout layouts/application.html.erb (Duration: 51.8ms | Allocations: 41610)
+Completed 200 OK in 81ms (Views: 53.2ms | ActiveRecord: 0.8ms | Allocations: 48320)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-13 09:30:26 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 14.6ms | Allocations: 6309)
+  Rendered layout layouts/application.html.erb (Duration: 76.1ms | Allocations: 41262)
+Completed 200 OK in 91ms (Views: 77.7ms | ActiveRecord: 0.8ms | Allocations: 47970)
+
+
+Started GET "/breweries/1" for 127.0.0.1 at 2023-10-13 09:30:34 +0300
+Processing by BreweriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBrewery Load (0.2ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/breweries_controller.rb:68:in `set_brewery'
+  [1m[36mCACHE Brewery Load (0.0ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/breweries_controller.rb:12:in `show'
+  [1m[36mRating Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/controllers/breweries_controller.rb:13:in `show'
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Sum (0.1ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:8:in `average_rating'
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/show.html.erb within layouts/application
+  [1m[36mBeer Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "beers" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/views/breweries/_brewery.html.erb:13
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/views/breweries/_brewery.html.erb:17
+  Rendered breweries/_brewery.html.erb (Duration: 8.3ms | Allocations: 6625)
+  [1m[36mRating Load (0.2ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/views/breweries/show.html.erb:5
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mCACHE Rating Sum (0.0ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:8:in `average_rating'
+  Rendered breweries/show.html.erb within layouts/application (Duration: 17.5ms | Allocations: 13541)
+  Rendered layout layouts/application.html.erb (Duration: 20.1ms | Allocations: 16028)
+Completed 200 OK in 51ms (Views: 19.9ms | ActiveRecord: 1.5ms | Allocations: 29044)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-13 09:55:27 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 6443)
+  Rendered layout layouts/application.html.erb (Duration: 68.5ms | Allocations: 41715)
+Completed 200 OK in 79ms (Views: 69.9ms | ActiveRecord: 0.8ms | Allocations: 48421)
+
+
+Started GET "/breweries/1" for 127.0.0.1 at 2023-10-13 09:55:29 +0300
+Processing by BreweriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBrewery Load (0.5ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/breweries_controller.rb:68:in `set_brewery'
+  [1m[36mCACHE Brewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/breweries_controller.rb:12:in `show'
+  [1m[36mRating Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/controllers/breweries_controller.rb:13:in `show'
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mRating Sum (0.1ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:8:in `average_rating'
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/show.html.erb within layouts/application
+  [1m[36mBeer Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "beers" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/views/breweries/_brewery.html.erb:13
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/views/breweries/_brewery.html.erb:17
+  Rendered breweries/_brewery.html.erb (Duration: 8.1ms | Allocations: 6626)
+  [1m[36mRating Load (0.1ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/views/breweries/show.html.erb:5
+  [1m[36mCACHE Rating Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:5:in `average_rating'
+  [1m[36mCACHE Rating Sum (0.0ms)[0m  [1m[34mSELECT SUM("ratings"."score") FROM "ratings" INNER JOIN "beers" ON "ratings"."beer_id" = "beers"."id" WHERE "beers"."brewery_id" = ?[0m  [["brewery_id", 1]]
+  ↳ app/models/concerns/rating_average.rb:8:in `average_rating'
+  Rendered breweries/show.html.erb within layouts/application (Duration: 16.7ms | Allocations: 13509)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 15994)
+Completed 200 OK in 60ms (Views: 19.1ms | ActiveRecord: 1.9ms | Allocations: 29008)
+
+
+Started GET "/signup" for 127.0.0.1 at 2023-10-13 09:55:34 +0300
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 8.8ms | Allocations: 2949)
+  Rendered users/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 3313)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 5891)
+Completed 200 OK in 36ms (Views: 16.2ms | ActiveRecord: 1.0ms | Allocations: 10970)
+
+
+Started GET "/breweries" for 127.0.0.1 at 2023-10-13 09:55:35 +0300
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.2ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1523)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 3894)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.4ms | Allocations: 4221)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 09:55:56 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1394)
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 3983)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.0ms | Allocations: 4823)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 09:56:03 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 870)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 3369)
+Completed 418  in 1392ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 9481)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 09:56:15 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"madrid", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 813)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 3171)
+Completed 418  in 454ms (Views: 13.0ms | ActiveRecord: 0.0ms | Allocations: 8341)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 09:56:18 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 995)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3364)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 3623)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 09:57:03 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1104)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 14959)
+Completed 200 OK in 16ms (Views: 15.0ms | Allocations: 15594)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 09:57:09 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 869)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 3362)
+Completed 418  in 1812ms (Views: 13.7ms | Allocations: 8652)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 09:57:13 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1007)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3380)
+Completed 200 OK in 8ms (Views: 7.2ms | Allocations: 3640)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 09:57:58 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2084)
+  Rendered layout layouts/application.html.erb (Duration: 66.1ms | Allocations: 37312)
+Completed 200 OK in 74ms (Views: 68.8ms | ActiveRecord: 0.0ms | Allocations: 41486)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 09:58:03 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"madrid", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 871)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 3356)
+Completed 418  in 1148ms (Views: 11.2ms | ActiveRecord: 0.0ms | Allocations: 9458)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 09:58:13 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1029)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 3398)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 3666)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 09:58:17 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"vaasa", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 813)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 3172)
+Completed 418  in 477ms (Views: 17.8ms | ActiveRecord: 0.0ms | Allocations: 8304)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:00:21 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 977)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 3344)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 3607)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:00:26 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"Helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 812)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 3171)
+Completed 418  in 1056ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 8201)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:01:07 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1117)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 15012)
+Completed 200 OK in 19ms (Views: 18.0ms | Allocations: 15648)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:01:11 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"madrid", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 875)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 3359)
+Completed 418  in 1866ms (Views: 10.2ms | Allocations: 7133)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:01:20 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 834)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 3192)
+Completed 418  in 464ms (Views: 13.5ms | Allocations: 11398)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:06:00 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"vaasa", "commit"=>"Search"}
+Completed 500 Internal Server Error in 1448ms (Allocations: 3917)
+
+
+  
+NoMethodError (undefined method `each_pair' for ["id", "21514"]:Array
+
+    hash.each_pair do |k, v|
+        ^^^^^^^^^^
+Did you mean?  each_slice):
+  
+app/controllers/places_controller.rb:11:in `new'
+app/controllers/places_controller.rb:11:in `block in search'
+app/controllers/places_controller.rb:10:in `each'
+app/controllers/places_controller.rb:10:in `map'
+app/controllers/places_controller.rb:10:in `search'
+Started GET "/breweries" for 127.0.0.1 at 2023-10-13 10:06:04 +0300
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 6162)
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 8789)
+Completed 200 OK in 38ms (Views: 29.7ms | ActiveRecord: 1.9ms | Allocations: 12157)
+
+
+Started GET "/lace" for 127.0.0.1 at 2023-10-13 10:06:08 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/lace"):
+  
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:06:13 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1022)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3507)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 3808)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:06:23 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"barcelona", "commit"=>"Search"}
+Completed 500 Internal Server Error in 443ms (ActiveRecord: 0.0ms | Allocations: 3868)
+
+
+  
+NoMethodError (undefined method `each_pair' for ["id", nil]:Array
+
+    hash.each_pair do |k, v|
+        ^^^^^^^^^^
+Did you mean?  each_slice):
+  
+app/controllers/places_controller.rb:11:in `new'
+app/controllers/places_controller.rb:11:in `block in search'
+app/controllers/places_controller.rb:10:in `each'
+app/controllers/places_controller.rb:10:in `map'
+app/controllers/places_controller.rb:10:in `search'
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:06:32 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 986)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 3367)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 3627)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:06:35 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 834)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3192)
+Completed 418  in 1469ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 11236)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:15:14 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 899)
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | Allocations: 14758)
+Completed 418  in 1832ms (Views: 25.8ms | Allocations: 23494)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:15:28 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"", "commit"=>"Search"}
+Completed 500 Internal Server Error in 1222ms (Allocations: 2996)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass
+
+      places_from_api = response.parsed_response["bmp_locations"]["location"]
+                                                                 ^^^^^^^^^^^^):
+  
+app/controllers/places_controller.rb:9:in `search'
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:15:37 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1573)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 4607)
+Completed 200 OK in 15ms (Views: 13.6ms | Allocations: 5482)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:15:41 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 965)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 3338)
+Completed 418  in 492ms (Views: 5.6ms | Allocations: 11549)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:18:40 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"new york", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2437)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 16295)
+Completed 418  in 2081ms (Views: 14.5ms | Allocations: 105473)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:20:13 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1542)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 4605)
+Completed 200 OK in 8ms (Views: 6.5ms | Allocations: 5556)
+
+
+Started GET "/breweries" for 127.0.0.1 at 2023-10-13 10:20:15 +0300
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 3398)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 6021)
+Completed 200 OK in 16ms (Views: 11.0ms | ActiveRecord: 0.6ms | Allocations: 8530)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:20:17 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1037)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 3430)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 3715)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:21:35 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1004)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3397)
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 3656)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:21:38 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"vaasa", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 852)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 3237)
+Completed 418  in 1222ms (Views: 13.8ms | ActiveRecord: 0.0ms | Allocations: 5175)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:23:39 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2278)
+  Rendered layout layouts/application.html.erb (Duration: 62.5ms | Allocations: 37401)
+Completed 200 OK in 70ms (Views: 65.0ms | ActiveRecord: 0.0ms | Allocations: 41692)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:24:08 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"vaasa", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 927)
+  Rendered layout layouts/application.html.erb (Duration: 34.8ms | Allocations: 14727)
+Completed 418  in 1684ms (Views: 38.6ms | Allocations: 18028)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:25:46 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2248)
+  Rendered layout layouts/application.html.erb (Duration: 74.2ms | Allocations: 37221)
+Completed 200 OK in 82ms (Views: 77.2ms | ActiveRecord: 0.0ms | Allocations: 41512)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:25:49 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"vaasa", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 919)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 3432)
+Completed 418  in 1368ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 6456)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:26:47 +0300
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1039)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3434)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 3702)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:26:52 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"mikkeli", "commit"=>"Search"}
+Redirected to http://127.0.0.1:3000/places
+Completed 302 Found in 1472ms (ActiveRecord: 0.0ms | Allocations: 1520)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 10:26:54 +0300
+Processing by PlacesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1030)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 3423)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 3687)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 10:27:00 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"vaasa", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 850)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 3235)
+Completed 418  in 468ms (Views: 13.3ms | ActiveRecord: 0.0ms | Allocations: 5021)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:11:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"mikkeli", "commit"=>"Search"}
+Redirected to http://127.0.0.1:3000/places
+Completed 302 Found in 1764ms (ActiveRecord: 0.0ms | Allocations: 3952)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 11:11:18 +0300
+Processing by PlacesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2089)
+  Rendered layout layouts/application.html.erb (Duration: 90.5ms | Allocations: 37166)
+Completed 200 OK in 101ms (Views: 94.8ms | ActiveRecord: 0.0ms | Allocations: 40201)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:11:25 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"new york", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2425)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4951)
+Completed 418  in 1426ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 93861)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:11:34 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 957)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3343)
+Completed 418  in 776ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 11563)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:12:09 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"vaasa", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 847)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 3233)
+Completed 418  in 1360ms (Views: 13.7ms | ActiveRecord: 0.0ms | Allocations: 5027)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:12:23 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"aucland", "commit"=>"Search"}
+Redirected to http://127.0.0.1:3000/places
+Completed 302 Found in 727ms (ActiveRecord: 0.0ms | Allocations: 1362)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 11:12:24 +0300
+Processing by PlacesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1032)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 3426)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 3694)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:12:37 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"sydney", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 924)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 3309)
+Completed 418  in 650ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 9688)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:12:46 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"denver", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1837)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 4237)
+Completed 418  in 2991ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 62878)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:13:01 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"medrid", "commit"=>"Search"}
+Redirected to http://127.0.0.1:3000/places
+Completed 302 Found in 621ms (ActiveRecord: 0.0ms | Allocations: 1370)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-10-13 11:13:02 +0300
+Processing by PlacesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1006)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 3399)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 3663)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:13:06 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"madrid", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 876)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 3261)
+Completed 418  in 440ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 6742)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-10-13 11:13:14 +0300
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"los angeles", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1595)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 3980)
+Completed 418  in 1003ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 48846)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-05 11:55:47 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BreweriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering breweries/index.html.erb within layouts/application
+  [1m[36mBrewery Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:5
+  [1m[36mBrewery Load (0.1ms)[0m  [1m[34mSELECT "breweries".* FROM "breweries"[0m
+  ↳ app/views/breweries/index.html.erb:8
+  Rendered breweries/index.html.erb within layouts/application (Duration: 11.6ms | Allocations: 6338)
+  Rendered layout layouts/application.html.erb (Duration: 73.5ms | Allocations: 41634)
+Completed 200 OK in 89ms (Views: 75.3ms | ActiveRecord: 0.6ms | Allocations: 48514)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-12-05 11:55:51 +0200
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1772)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 4405)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 5253)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-12-05 11:55:55 +0200
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"helsinki", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1024)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 3530)
+Completed 418  in 1735ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 16521)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-12-05 11:57:44 +0200
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"New York", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2358)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4758)
+Completed 418  in 2362ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 138046)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-12-05 12:20:43 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2244)
+  Rendered layout layouts/application.html.erb (Duration: 53.3ms | Allocations: 37360)
+Completed 200 OK in 60ms (Views: 55.5ms | ActiveRecord: 0.0ms | Allocations: 41645)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-12-05 12:20:48 +0200
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"new york", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2425)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 4946)
+Completed 418  in 1692ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 139432)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-12-05 12:20:53 +0200
+Processing by PlacesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1038)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 3435)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.0ms | Allocations: 3703)
+
+
+Started POST "/places" for 127.0.0.1 at 2023-12-05 12:20:58 +0200
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"new york", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2402)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4795)
+Completed 418  in 41ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 49400)
+
+
