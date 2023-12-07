@@ -50,14 +50,14 @@ class MembershipsController < ApplicationController
   
     # DELETE /memberships/1 or /memberships/1.json
     def destroy
+      @membership = Membership.find(params[:id])
       @membership.destroy
-  
+    
       respond_to do |format|
-        format.html { redirect_to memberships_url, notice: "Membership was successfully destroyed." }
+        format.html { redirect_to user_path(current_user), notice: "Your membership in #{@membership.beer_club.name} has ended." }
         format.json { head :no_content }
       end
     end
-  
     private
   
     # Use callbacks to share common setup or constraints between actions.
@@ -72,6 +72,12 @@ class MembershipsController < ApplicationController
   
     # Only allow a list of trusted parameters through.
     def membership_params
-      params.require(:membership).permit(:beer_club_id)
+      params.require(:membership).permit(:beer_club_id, :user_id, :id)
     end
+
+
+    def set_membership_to_delete
+      @membership = Membership.find_by(:beer_club_id => params[:membership][:beer_club_id], :user_id => current_user.id)
+      @beer_club = BeerClub.find(params[:membership][:beer_club_id])
+    end 
   end
