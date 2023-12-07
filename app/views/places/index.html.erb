@@ -8,6 +8,16 @@
 <% end %>
 
 <% if @places %>
+
+<div>
+    <h3>The current beer weather in</h3>
+    <h4><%= @weather['temperature'] %> Celsius</h4>
+    <%@weather['weather_icons'].each do |url|%>
+        <%= image_tag image_url(url) %>
+    <% end %>
+    <h4>Wind <%= @weather['wind_speed'] %> m/s, direction <%= @weather['wind_dir'] %></h4>
+</div>
+
   <table>
     <thead>
       <tr>
