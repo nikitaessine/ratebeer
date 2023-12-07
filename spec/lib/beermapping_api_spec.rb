@@ -67,7 +67,7 @@ describe "BeermappingApi" do
             BeermappingApi.places_in("turku")
             places = BeermappingApi.places_in("turku")
 
-            expect(places.size).to eq(1)
+            expect(places.size).to eq(2)
             place = places.first
             expect(place.name).to eq("Panimoravintola Koulu")
             expect(place.street).to eq("Eerikinkatu 18")
