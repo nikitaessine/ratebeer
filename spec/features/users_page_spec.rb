@@ -64,7 +64,7 @@ describe "User's Ratings" do
       visit user_path(@user)
     
       expect {
-        find('button', text: 'delete').click
+        find('button', text: 'delete')[0].click
       }.to change { @user.ratings.count }.from(2).to(1)
     end
     

@@ -62,18 +62,18 @@ describe "BeermappingApi" do
             <?xml version='1.0' encoding='utf-8' ?><bmp_locations><location><id>18856</id><name>Panimoravintola Koulu</name><status>Brewpub</status><reviewlink>https://beermapping.com/location/18856</reviewlink><proxylink>http://beermapping.com/maps/proxymaps.php?locid=18856&amp;d=5</proxylink><blogmap>http://beermapping.com/maps/blogproxy.php?locid=18856&amp;d=1&amp;type=norm</blogmap><street>Eerikinkatu 18</street><city>Turku</city><state></state><zip>20100</zip><country>Finland</country><phone>(02) 274 5757</phone><overall>0</overall><imagecount>0</imagecount></location><location><id>18857</id><name>Another Place</name><status>Some Status</status><reviewlink>https://beermapping.com/location/18857</reviewlink><proxylink>http://beermapping.com/maps/proxymaps.php?locid=18857&amp;d=5</proxylink><blogmap>http://beermapping.com/maps/blogproxy.php?locid=18857&amp;d=1&amp;type=norm</blogmap><street>Another Street 15</street><city>Turku</city><state></state><zip>20100</zip><country>Finland</country><phone>(02) 123 4567</phone><overall>0</overall><imagecount>0</imagecount></location></bmp_locations>
             END_OF_STRING
 
-            stub_request(:get, /.*helsinki/).to_return(body: canned_answer, headers: { 'Content-Type' => "text/xml" })
+            stub_request(:get, /.*madrid/).to_return(body: canned_answer, headers: { 'Content-Type' => "text/xml" })
 
-            places = BeermappingApi.places_in("helsinki")
+            places = BeermappingApi.places_in("madrid")
 
             expect(places.size).to eq(2)
             expect(places.first.is_a?(Place)).to be(true)
-            expect(places.first.name).to eq("Panimoravintola Koulu")
-            expect(places.first.street).to eq("Eerikinkatu 18")
+            expect(places.first.name).to eq("Magister")
+            expect(places.first.street).to eq("Calle Principe 18")
 
             expect(places.last.is_a?(Place)).to be(true)
-            expect(places.last.name).to eq("Brewdog Helsinki")
-            expect(places.last.street).to eq("ampujankatu 20")
+            expect(places.last.name).to eq("Cafee Ke")
+            expect(places.last.street).to eq("Calle Cuchilleros 3")
         end
     end
 end
