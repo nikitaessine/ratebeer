@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :memberships
   resources :users
   resources :beers
   resources :breweries
+  resources :beer_clubs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -18,6 +20,6 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   resources :places, only: [:index, :show]
-  get 'places', to: 'places#index'
+  #get 'places', to: 'places#index'
   post 'places', to: 'places#search'
 end

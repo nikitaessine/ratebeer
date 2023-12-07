@@ -2,21 +2,17 @@
 
 <%= render @beer %>
 
-<% if @beer.ratings.present? %>
-  <p>
-    <%= 
-  </p>"Beer #{'has' if @beer.ratings.size == 1 || @beer.ratings.empty? || !@beer.ratings} #{'have' if @beer.ratings.size > 1} #{pluralize(@beer.ratings.size, 'rating')}" %> with an average of <%= @beer.average_rating.to_f.round(2) %>
+<% if current_user %>
+  <h4>give a rating:</h4>
 
-
-<% else %>
-  <p>This beer has no ratings yet.</p>
-<% end %>
-
-
-<div>
-  <% if current_user %>
-    <%= link_to "Edit this beer", edit_beer_path(@beer) %> |
-    <%= link_to "Back to beers", beers_path %>
-    <%= button_to "Destroy this beer", @beer, method: :delete %>
+  <%= form_with(model: @rating) do |form| %>
+    <%= form.hidden_field :beer_id %>
+    score: <%= form.number_field :score %>
+    <%= form.submit "Create rating" %>
   <% end %>
-</div>
+
+  <div>
+    <%= link_to "Edit this beer", edit_beer_path(@beer) %>
+    <%= button_to "Destroy this beer", @beer, method: :delete %>
+  </div>
+<% end %>
