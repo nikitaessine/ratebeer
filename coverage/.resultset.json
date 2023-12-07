@@ -394,6 +394,7 @@
           0,
           0,
           0,
+          0,
           null,
           0,
           0,
@@ -804,6 +805,14 @@
         "branches": {
         }
       },
+      "/home/nikitaes/ratebeer/app/models/weather.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/home/nikitaes/ratebeer/lib/beermapping_api.rb": {
         "lines": [
           0,
@@ -839,8 +848,32 @@
         ],
         "branches": {
         }
+      },
+      "/home/nikitaes/ratebeer/lib/weather_api.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1701955245
+    "timestamp": 1701958839
   }
 }

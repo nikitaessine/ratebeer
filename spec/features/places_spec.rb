@@ -25,7 +25,7 @@ describe "Places" do
   
   before do
     ["helsinki", "madrid", "new york"].each do |city|
-      allow(WeatherstackApi).to receive(:weather_in).with(city).and_return(mock_weather)
+      allow(WeatherApi).to receive(:weather_in).with(city).and_return(mock_weather)
     end
   end
 
