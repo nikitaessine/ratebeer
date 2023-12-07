@@ -24,10 +24,10 @@ class MembershipsController < ApplicationController
     def create
       @membership = Membership.new(membership_params)
       @membership.user = current_user
-  
+    
       respond_to do |format|
         if @membership.save
-          format.html { redirect_to membership_url(@membership), notice: "Membership was successfully created." }
+          format.html { redirect_to @membership.beer_club, notice: "#{current_user.username}, welcome to the club!" }
           format.json { render :show, status: :created, location: @membership }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +35,6 @@ class MembershipsController < ApplicationController
         end
       end
     end
-  
     # PATCH/PUT /memberships/1 or /memberships/1.json
     def update
       respond_to do |format|
