@@ -2,7 +2,7 @@
 
 <%= render @beer_club %>
 
-<% if current_user %>
+<% if current_user and current_user.memberships.map{ |m| m.beer_club_id }.exclude?(@beer_club.id) %>
   <h4>join a club:</h4>
 
   <%= form_with(model: @membership) do |form| %>
