@@ -68,8 +68,8 @@ describe "BeermappingApi" do
 
             expect(places.size).to eq(2)
             expect(places.first.is_a?(Place)).to be(true)
-            expect(places.first.name).to eq("Pullman Bar")
-            expect(places.first.street).to eq("Kaivokatu 1")
+            expect(places.first.name).to eq("Panimoravntola Koulu")
+            expect(places.first.street).to eq("Eerikinkatu 18")
 
             expect(places.last.is_a?(Place)).to be(true)
             expect(places.last.name).to eq("Brewdog Helsinki")

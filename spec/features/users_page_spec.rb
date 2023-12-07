@@ -52,21 +52,20 @@ describe "User's Ratings" do
     end
 
     it "displays user's own ratings but not other users'" do
-        visit user_path(@user)
-
-        expect(page).to have_content "Beer 1 4"
-        expect(page).to have_content "Beer 2 3"
-
-        expect(page).not_to have_content "Beer 1 5"
+      visit user_path(@user)
+    
+      expect(page).to have_content "4 Beer 1"
+      expect(page).to have_content "3 Beer 2"
+    
+      expect(page).not_to have_content "5 Beer 1"
     end
 
     it "can be deleted by user" do
-        visit user_path(@user)
-
-        expect {
-            find(:xpath, "(//a[text()='Delete'])[1]").click
-        }.to change { @user.ratings.count }.from(2).to(1)
+      visit user_path(@user)
+    
+      expect {
+        find('button', text: 'Delete').click
+      }.to change { @user.ratings.count }.from(2).to(1)
     end
     
 end
-
