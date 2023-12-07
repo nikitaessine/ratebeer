@@ -54752,3 +54752,25 @@ Processing by PlacesController#search as TURBO_STREAM
 Completed 418  in 2359ms (Views: 21.3ms | ActiveRecord: 0.4ms | Allocations: 18025)
 
 
+Started POST "/places" for 127.0.0.1 at 2023-12-07 16:29:29 +0200
+Processing by PlacesController#search as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "city"=>"kumpula", "commit"=>"Search"}
+Redirected to http://127.0.0.1:3000/places
+Completed 302 Found in 1866ms (Allocations: 3196)
+
+
+Started GET "/places" for 127.0.0.1 at 2023-12-07 16:29:31 +0200
+Processing by PlacesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering places/index.html.erb within layouts/application
+  Rendered places/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 489)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 4516)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.9ms | Allocations: 4778)
+
+
