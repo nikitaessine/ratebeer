@@ -1,10 +1,38 @@
-<h2>List of ratings</h2>
+<table class="table table-striped">
 
-<ul>
-  <% @ratings.each do |rating| %>
-    <%= render rating %> 
-    <%= link_to rating.user.username, user_path(rating.user) %>
-  <% end %>
-</ul>
+  <tbody>
+    <tr><td colspan="2"><h2>Top 3 Beers</h2></td></tr>
+    <% @beers.sort_by(&:average_rating).last(3).reverse.each do |beer| %>
+      <tr>
+        <td><%= beer.name %></td>
+        <td><%= beer.average_rating %></td>
+      </tr>
+    <% end %>
+
+    <tr><td colspan="2"><h2>Top 3 Breweries</h2></td></tr>
+    <% @breweries.sort_by(&:average_rating).last(3).reverse.each do |brewery| %>
+      <tr>
+        <td><%= brewery.name %></td>
+        <td><%= brewery.average_rating %></td>
+      </tr>
+    <% end %>
+
+    <tr><td colspan="2"><h2>Recent Ratings</h2></td></tr>
+    <% @recent_ratings.each do |rating| %>
+      <tr>
+        <td><%= rating.beer.name %></td>
+        <td><%= rating.score %> by <%= rating.user.username %></td>
+      </tr>
+    <% end %>
+
+    <tr><td colspan="2"><h2>Top 3 Users by Ratings</h2></td></tr>
+    <% @users.sort_by { |user| user.ratings.size }.last(3).reverse.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.ratings.size %> ratings</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New rating", new_rating_path %>

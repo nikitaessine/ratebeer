@@ -70,7 +70,21 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+  def lock
+    user = User.find(params[:id])
+    user.update_attribute(:locked, true)
+    redirect_to user, notice: 'User account has been locked.'
+  end
+
+  def unlock
+    user = User.find(params[:id])
+    user.update_attribute(:locked, false)
+    redirect_to user, notice: 'User account has been unlocked.'
+  end
+
+  def ensure_admin
+    redirect_to users_path, notice: 'Only admins can lock or unlock accounts.' unless current_user&.admin?
+  end
 
   def set_user
     @user = User.find(params[:id])

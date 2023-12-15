@@ -11,7 +11,7 @@
       have
     <% end %>
     <%= pluralize(@brewery.ratings.size, 'rating') %>
-    with an average of <%= @brewery.average_rating.to_f.round(2) %>.
+    with an average of <%= round(@brewery.average_rating.to_f) %>.
   </p>
 <% else %>
   <p>Brewery has no ratings.</p>
@@ -19,9 +19,9 @@
 
 <div>
   <% if current_user %>
-    <%= link_to "Edit this brewery", edit_brewery_path(@brewery) %> |
+  <%= link_to "change activity", toggle_activity_brewery_path(@brewery.id), data: {turbo_method: "post"}, class: "btn btn-primary" %>
     <%= link_to "Back to breweries", breweries_path %> | <%= link_to 'list of beers', beers_path %>
 
-    <%= button_to "Destroy this brewery", @brewery, method: :delete %>
+    <%= edit_and_destroy_buttons(@brewery) %>
   <% end %>
 </div>

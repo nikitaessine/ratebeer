@@ -7,6 +7,9 @@ class Brewery < ApplicationRecord
   validates :name, presence: true
   validate :brewery_date_within_range
 
+  scope :active, -> { where active: true }
+  scope :retired, -> { where active: [nil,false] }
+
   def brewery_date_within_range
     return unless year.present? && (year < 1040 || year > Time.now.year)
 

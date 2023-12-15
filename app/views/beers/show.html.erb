@@ -3,16 +3,14 @@
 <%= render @beer %>
 
 <% if current_user %>
-  <h4>give a rating:</h4>
 
-  <%= form_with(model: @rating) do |form| %>
-    <%= form.hidden_field :beer_id %>
-    score: <%= form.number_field :score %>
-    <%= form.submit "Create rating" %>
-  <% end %>
+<h4>give a rating:<h4>
 
-  <div>
-    <%= link_to "Edit this beer", edit_beer_path(@beer) %>
-    <%= button_to "Destroy this beer", @beer, method: :delete %>
-  </div>
+<%= form_with(model: @rating) do |form| %>
+  <%= form.hidden_field :beer_id %>
+  score: <%= form.number_field :score %>
+  <%= form.submit "Create rating", class:"btn btn-primary" %>
+<% end %>
+
+<%= edit_and_destroy_buttons(@beer) %>
 <% end %>

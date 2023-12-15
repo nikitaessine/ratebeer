@@ -17,12 +17,10 @@
   </div>
 
   <div>
-    <%= form.label :style, style: "display: block" %>
-    <%= form.select :style, options_for_select(@styles) %>
+    <%= form.select :style_id, options_from_collection_for_select(@styles, :id, :name) %>
   </div>
-
+  
   <div>
-    <%= form.label :brewery_id, style: "display: block" %>
     <%= form.select :brewery_id, options_from_collection_for_select(@breweries, :id, :name) %>
   </div>
 

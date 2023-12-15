@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
+  resources :styles
   resources :memberships
-  resources :users
-  resources :beers
-  resources :breweries
   resources :beer_clubs
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-  root 'breweries#index'
-  get 'kaikki_bisset', to: 'beers#index'
-
+  resources :users do
+    member do
+      put 'lock'
+      put 'unlock'
+    end
+  end
+  resources :beers
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
   resources :ratings, only: [:index, :new, :create, :destroy]
-
   resource :session, only: [:new, :create, :destroy]
 
   get 'signup', to: 'users#new'
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   resources :places, only: [:index, :show]
-  #get 'places', to: 'places#index'
-  post 'places', to: 'places#search'
+  post 'places', to:'places#search'
+
+  root 'breweries#index'
 end

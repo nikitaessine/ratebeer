@@ -1,6 +1,5 @@
 <h1>Beer places search</h1>
 
-<p id="notice"><%= notice %></p>
 
 <%= form_tag places_path do %>
   city <%= text_field_tag :city, params[:city] %>
@@ -18,23 +17,23 @@
     <h4>Wind <%= @weather['wind_speed'] %> m/s, direction <%= @weather['wind_dir'] %></h4>
 </div>
 
-  <table>
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>status</th>
-        <th>street</th>
-        <th>city</th>
-        <th>zip</th>
-        <th>country</th>
-        <th>overall</th>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">status</th>
+        <th scope="col">street</th>
+        <th scope="col">city</th>
+        <th scope="col">zip</th>
+        <th scope="col">country</th>
+        <th scope="col">overall</th>
       </tr>
     </thead>
     <tbody>
       <% @places.each do |place| %>
         <tr>
-          <td><%= place.id %></td>
+          <td scope="col"><%= place.id %></td>
           <td><%= link_to place.name, place_path(place.id) %></td>
           <td><%= place.status %></td>
           <td><%= place.street %></td>
