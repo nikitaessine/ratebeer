@@ -1,6 +1,6 @@
 <div id="<%= dom_id brewery %>">
    <h2>
-    <%= brewery.name %>
+    <%= link_to brewery.name, brewery %>
     <% if not brewery.active  %>
       <span class="badge bg-secondary">retired</span>
     <% end %>

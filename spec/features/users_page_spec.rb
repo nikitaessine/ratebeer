@@ -40,8 +40,9 @@ describe "User's Ratings" do
         @user = FactoryBot.create(:user, username: "Kalle", password: "Foobar1")
         @user2 = FactoryBot.create(:user, username: "Anna", password: "Password1", password_confirmation: "Password1")
 
-        @beer1 = FactoryBot.create(:beer, name: "Beer 1")
-        @beer2 = FactoryBot.create(:beer, name: "Beer 2")
+        style = FactoryBot.create(:style, name: "Lager")
+        @beer1 = FactoryBot.create(:beer, name: "Beer 1", style: style)
+        @beer2 = FactoryBot.create(:beer, name: "Beer 2", style: style)
 
         FactoryBot.create(:rating, score: 4, user: @user, beer: @beer1)
         FactoryBot.create(:rating, score: 3, user: @user, beer: @beer2)
@@ -64,7 +65,7 @@ describe "User's Ratings" do
       visit user_path(@user)
     
       expect {
-        find('button', text: 'delete')[0].click
+        all('button', text: 'delete')[0].click
       }.to change { @user.ratings.count }.from(2).to(1)
     end
     

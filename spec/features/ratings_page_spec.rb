@@ -4,8 +4,9 @@ include Helpers
 
 describe "Rating" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
-  let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery }
-  let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery }
+  let!(:style) { FactoryBot.create :style, name: "Lager" }
+  let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery, style: style }
+  let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery, style: style }
   let!(:user) { FactoryBot.create :user }
 
   before :each do
@@ -28,9 +29,9 @@ describe "Rating" do
 
   it "displays existing ratings and their count" do
 
-      FactoryBot.create(:rating, user: user, score: 15)
-      FactoryBot.create(:rating, user: user, score: 25)
-      FactoryBot.create(:rating, user: user, score: 35)
+    style = FactoryBot.create(:style, name: "Lager")
+    beer = FactoryBot.create(:beer, name: "Beer 1", style: style)
+    FactoryBot.create(:rating, user: user, score: 15, beer: beer)
   
     visit ratings_path
     Rating.all.each do |r|

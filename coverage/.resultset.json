@@ -1,6 +1,262 @@
 {
   "RSpec": {
     "coverage": {
+      "/home/nikitaes/ratebeer/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/helpers/beer_clubs_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/helpers/beers_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/helpers/breweries_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/helpers/memberships_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/helpers/styles_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/helpers/users_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/models/brewery.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/models/concerns/rating_average.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/controllers/beers_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          4,
+          null,
+          0,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/models/style.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/nikitaes/ratebeer/app/controllers/sessions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null
+        ]
+      },
       "/home/nikitaes/ratebeer/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
@@ -13,26 +269,6 @@
       },
       "/home/nikitaes/ratebeer/app/channels/application_cable/connection.rb": {
         "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/controllers/application_controller.rb": {
-        "lines": [
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
           0,
           0,
           0,
@@ -106,97 +342,6 @@
           0,
           0,
           null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/controllers/beers_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
           0,
           null,
           null,
@@ -458,35 +603,6 @@
         "branches": {
         }
       },
-      "/home/nikitaes/ratebeer/app/controllers/sessions_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/home/nikitaes/ratebeer/app/controllers/styles_controller.rb": {
         "lines": [
           0,
@@ -639,6 +755,16 @@
           0,
           null,
           0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
           0,
           0,
@@ -647,73 +773,9 @@
           0,
           0,
           0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/helpers/application_helper.rb": {
-        "lines": [
+          null,
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/helpers/beer_clubs_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/helpers/beers_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/helpers/breweries_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/helpers/memberships_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/helpers/styles_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/helpers/users_helper.rb": {
-        "lines": [
           0,
           0
         ],
@@ -736,15 +798,6 @@
       "/home/nikitaes/ratebeer/app/mailers/application_mailer.rb": {
         "lines": [
           0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/models/application_record.rb": {
-        "lines": [
           0,
           0,
           0
@@ -789,58 +842,6 @@
         "branches": {
         }
       },
-      "/home/nikitaes/ratebeer/app/models/brewery.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/models/concerns/rating_average.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/home/nikitaes/ratebeer/app/models/membership.rb": {
         "lines": [
           0,
@@ -875,17 +876,6 @@
           0,
           0,
           0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/nikitaes/ratebeer/app/models/style.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          null,
           0
         ],
         "branches": {
@@ -1009,6 +999,6 @@
         }
       }
     },
-    "timestamp": 1702383336
+    "timestamp": 1702646375
   }
 }
