@@ -36,6 +36,7 @@ RSpec.describe User, type: :model do
       User.destroy_all
     end
     let(:user){ FactoryBot.create(:user) }
+    style = FactoryBot.create(:style, name: "Lager")
 
     it "has method for determining the favorite beer" do
       expect(user).to respond_to(:favorite_beer)
@@ -46,7 +47,7 @@ RSpec.describe User, type: :model do
     end
 
     it "is the only rated if only one rating" do
-      beer = FactoryBot.create(:beer)
+      beer = FactoryBot.create(:beer, style: style)
       rating = FactoryBot.create(:rating, score: 20, beer: beer, user: user)
 
       expect(user.favorite_beer).to eq(beer)
@@ -62,7 +63,8 @@ RSpec.describe User, type: :model do
  # describe User
 
 def create_beer_with_rating(object, score)
-  beer = FactoryBot.create(:beer)
+  style = FactoryBot.create(:style, name: "Lager")
+  beer = FactoryBot.create(:beer, style: style)
   FactoryBot.create(:rating, beer: beer, score: score, user: object[:user] )
   beer
 end
@@ -82,8 +84,10 @@ end
     end
   
     it "and with two ratings, has the correct average rating" do
-      FactoryBot.create(:rating, score: 10, user: user)
-      FactoryBot.create(:rating, score: 20, user: user)
+      style = FactoryBot.create(:style, name: "Lager")
+      beer = FactoryBot.create(:beer, style: style)
+      FactoryBot.create(:rating, score: 10, user: user, beer: beer)
+      FactoryBot.create(:rating, score: 20, user: user, beer: beer)
   
       expect(user.ratings.count).to eq(2)
       expect(user.average_rating).to eq(15.0)
