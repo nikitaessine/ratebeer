@@ -1,11 +1,18 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_that_signed_in, except: [:index, :show]
-
+  before_action :ensure_that_signed_in, except: [:index, :show, :list]
+  before_action :expire_brewery_cache, only: [:create, :update, :destroy]
   # GET /breweries or /breweries.json
   def index
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
+    @breweries = Brewery.all
+
+    #render json: @breweries.to_json(include: :beers)
+
+  end
+
+  def list
   end
 
   # GET /breweries/1 or /breweries/1.json

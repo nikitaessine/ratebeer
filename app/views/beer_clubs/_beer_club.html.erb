@@ -1,25 +1,47 @@
-<div id="<%= dom_id beer_club %>">
-  <p>
-    <strong>Name:</strong>
-    <%= beer_club.name %>
-  </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2><%= beer_club.name %></h2>
+      <p>
+        <strong>Founded:</strong>
+        <%= beer_club.founded %>
+      </p>
 
-  <p>
-    <strong>Founded:</strong>
-    <%= beer_club.founded %>
-  </p>
+      <p>
+        <strong>City:</strong>
+        <%= beer_club.city %>
+      </p>
+    </div>
+  </div>
 
-  <p>
-    <strong>City:</strong>
-    <%= beer_club.city %>
-  </p>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Members</h2>
+      <ul class="list-group">
+        <% @beer_club.memberships.where(confirmed: true).each do |membership| %>
+          <li class="list-group-item">
+            <%= membership.user.username %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
-  <h4>members</h4>
-
-  <% beer_club.members.each do |member| %>
-    <p>
-      <%= link_to member.username, member %>
-    </p>
-  <% end %>
-
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Membership Applications</h4>
+      <% beer_club.memberships.where(confirmed: false).each do |membership| %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">
+              <%= link_to membership.user.username, membership.user %> (Pending confirmation)
+              <% if current_user.memberships.where(beer_club_id: @beer_club.id, confirmed: true).exists? %>
+                <%= button_to 'Confirm', confirm_membership_path(membership), method: :put, class: 'btn btn-primary' %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 class Brewery < ApplicationRecord
   include RatingAverage
+  include TopItems
 
   has_many :beers, dependent: :destroy
   has_many :ratings, through: :beers
@@ -16,6 +17,12 @@ class Brewery < ApplicationRecord
     errors.add(:year, "must be between 1040 and #{Time.now.year}")
   end
 
+  def self.top(amount)
+    sorted_by_rating_in_desc_order = Brewery.all.sort_by(&:average_rating).reverse
+
+    sorted_by_rating_in_desc_order.take(amount)
+  end
+  
   def print_report
     puts name
     puts "established at year #{year}"

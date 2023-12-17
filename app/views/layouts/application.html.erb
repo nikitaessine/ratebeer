@@ -23,43 +23,46 @@
             </li>
             <li class="nav-item">
               <%= link_to 'beers', beers_path , { class: "nav-link" } %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ratings', ratings_path , { class: "nav-link" } %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'users', users_path , { class: "nav-link" } %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'clubs', beer_clubs_path , { class: "nav-link" } %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'places', places_path, { class: "nav-link" }  %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'styles', styles_path , { class: "nav-link" } %>
-            </li>
-            |
-            <% if current_user %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <%= current_user.username %>
-                </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" <%= link_to "My page", current_user %></a></li>
-                    <li><%= link_to "Rate a beer", new_rating_path , { class: "dropdown-item text-dark" } %></li>
-                    <li><%= link_to "Join a club", new_membership_path , { class: "dropdown-item text-dark" } %></li>
-                    <li><%= link_to "Sign out", signout_path,  class: "dropdown-item text-dark" , data: {turbo_method: :delete} %></li>
-                  </ul>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Sign up", signup_path , { class: "nav-link" } %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Sign in", signin_path , { class: "nav-link" } %>
-              </li>
-            <% end %>        
+</li>
+<li class="nav-item">
+  <%= link_to 'ratings', ratings_path , { class: "nav-link" } %>
+</li>
+<li class="nav-item">
+  <%= link_to 'users', users_path , { class: "nav-link" } %>
+</li>
+<li class="nav-item">
+  <%= link_to 'clubs', beer_clubs_path , { class: "nav-link" } %>
+</li>
+<li class="nav-item">
+  <%= link_to 'places', places_path, { class: "nav-link" }  %>
+</li>
+<li class="nav-item">
+  <%= link_to 'styles', styles_path , { class: "nav-link" } %>
+</li>
+<% if current_user %>
+  <li class="nav-item">
+    <%= link_to current_user.username, current_user, { class: "nav-link" } %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "My page", current_user , { class: "nav-link" } %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Rate a beer", new_rating_path , { class: "nav-link" } %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Join a club", new_membership_path , { class: "nav-link" } %>
+  </li>
+  <li class="nav-item">
+    <%= button_to "Sign out", signout_path, method: :delete, class: "nav-link" %>
+  </li>
+<% else %>
+  <li class="nav-item">
+    <%= link_to "Sign up", signup_path , { class: "nav-link" } %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Sign in", signin_path , { class: "nav-link" } %>
+  </li>
+<% end %>
           </ul>
         </div>
       </div>

@@ -35,6 +35,16 @@ class User < ApplicationRecord
     favorite_by(ratings, :style)
   end
 
+  def self.top(amount)
+    sorted_users = User
+                   .select('users.*, COUNT(ratings.id) AS ratings_count')
+                   .joins(:ratings)
+                   .group('users.id')
+                   .order('COUNT(ratings.id) DESC')
+
+    sorted_users.take(amount)
+  end
+
   def favorite_brewery
     return nil if ratings.empty?
 

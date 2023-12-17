@@ -1,13 +1,21 @@
+<div class="container">
+  <h1 class="my-4">Users</h1>
 
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+  <div id="users">
+    <% @users.each do |user| %>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to(user.username, user) %>
+            <% if user.locked? %>
+              <span class="badge bg-danger">account closed</span>
+            <% end %>
+          </h5>
+          <p class="card-text">
+            Has made <%= "#{user.ratings.size}"%> ratings, average rating <%= "#{user.average_rating}" %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New user", new_user_path %>

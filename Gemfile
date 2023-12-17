@@ -36,6 +36,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'rack-mini-profiler'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -97,3 +98,5 @@ gem 'httparty'
 gem 'bootstrap', '~> 5.2.0'
 gem 'jquery-rails'
 gem 'mini_racer'
+
+gem 'sucker_punch', '~> 3.0'

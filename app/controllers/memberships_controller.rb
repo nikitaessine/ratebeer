@@ -24,10 +24,11 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     @membership.user = current_user
-
+    @membership.confirmed = false 
+  
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership.beer_club, notice: "#{current_user.username}, welcome to the club!" }
+        format.html { redirect_to @membership.beer_club, notice: "Membership application sent." }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,6 +58,16 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_path(current_user), notice: "Your membership in #{@membership.beer_club.name} has ended." }
       format.json { head :no_content }
+    end
+  end
+
+  def confirm
+    @membership = Membership.find(params[:id])
+    if current_user.memberships.where(beer_club_id: @membership.beer_club_id, confirmed: true).exists?
+      @membership.update(confirmed: true)
+      redirect_to @membership.beer_club, notice: 'Membership was confirmed.'
+    else
+      redirect_to @membership.beer_club, alert: 'Only members can confirm memberships.'
     end
   end
 
