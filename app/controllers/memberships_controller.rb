@@ -24,8 +24,8 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     @membership.user = current_user
-    @membership.confirmed = false 
-  
+    @membership.confirmed = false
+
     respond_to do |format|
       if @membership.save
         format.html { redirect_to @membership.beer_club, notice: "Membership application sent." }

@@ -34,5 +34,4 @@ class Beer < ApplicationRecord
   def update_brewery
     brewery.touch
   end
-
 end

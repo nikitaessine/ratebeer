@@ -8,8 +8,7 @@ class BreweriesController < ApplicationController
     @retired_breweries = Brewery.retired
     @breweries = Brewery.all
 
-    #render json: @breweries.to_json(include: :beers)
-
+    # render json: @breweries.to_json(include: :beers)
   end
 
   def list

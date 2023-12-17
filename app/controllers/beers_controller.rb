@@ -8,13 +8,13 @@ class BeersController < ApplicationController
   def index
     @order = params[:order] || 'name'
     return if request.format.html? && fragment_exist?("beerlist-#{@order}")
-  
+
     @beers = Beer.includes(:brewery, :style, :ratings).all
     @beers = case @order
-              when 'name' then @beers.sort_by(&:name)
-              when 'brewery' then @beers.sort_by{ |b| b.brewery.name }
-              when 'style' then @beers.sort_by{ |b| b.style.name }
-            end
+             when 'name' then @beers.sort_by(&:name)
+             when 'brewery' then @beers.sort_by{ |b| b.brewery.name }
+             when 'style' then @beers.sort_by{ |b| b.style.name }
+             end
   end
 
   # GET /beers/1 or /beers/1.json

@@ -22,7 +22,7 @@ class Brewery < ApplicationRecord
 
     sorted_by_rating_in_desc_order.take(amount)
   end
-  
+
   def print_report
     puts name
     puts "established at year #{year}"

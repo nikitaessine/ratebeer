@@ -1,6 +1,6 @@
 module TopItems
   extend ActiveSupport::Concern
-  
+
   class_methods do
     def top(how_many)
       sorted_items = all.sort_by(&:average_rating).reverse
